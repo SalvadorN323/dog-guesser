@@ -1,0 +1,16 @@
+.main{
+  background-image: url('/Users/adriannunez/Desktop/dog-guesser/web-app/frontend/app/src/assets/css-animated-backgrounds.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login-container{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  padding: 20px;
+  border-radius: 2px;
+}
