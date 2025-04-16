@@ -39,13 +39,17 @@ function Login(){
   return(
     <div className="main">
         <div className="login-container">
-          <h1 style={{textAlign: 'center'}}>Login</h1>
+          <h1 style={{textAlign: 'center'}}>Welcome to Dog Guesser!</h1>
+          <h2 style={{textAlign: 'center'}}>Login</h2>
           <form onSubmit={handleLogin}>
             <TextField id="outlined-required" label="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             <br/>
             <TextField id="outlined-password-input" label="Password" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             <br/>
             <Button variant="contained" type="submit">Login</Button>
+            <br />
+            <h3 style={{textAlign: 'center'}}>Don't have an account?</h3>
+            <Button variant="contained" href="/register">Register</Button>
           </form>
         </div>
 
@@ -68,7 +72,7 @@ function App(){
     <Routes>
       <Route path="/" element={ <Login/> }/>
       <Route path="/register" element={ <Register/> }/>
-      <Route path="/dashboard" element={ <Dashboard/>}/>
+      <Route path="/dashboard" element={ <Dashboard/> }/>
     </Routes>
   );
 
