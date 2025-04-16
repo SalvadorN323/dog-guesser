@@ -3,6 +3,7 @@ import {Routes, Route} from "react-router-dom"
 import Dashboard from "../src/pages/dashboard";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import "../src/App.css";
 
 //main login component
 function Login(){
@@ -39,17 +40,17 @@ function Login(){
   return(
     <div className="main">
         <div className="login-container">
-          <h1 style={{textAlign: 'center'}}>Welcome to Dog Guesser!</h1>
+          <h1 style={{textAlign: 'center'}}>Nice to see you again!</h1>
           <h2 style={{textAlign: 'center'}}>Login</h2>
           <form onSubmit={handleLogin}>
-            <TextField id="outlined-required" label="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <TextField style={{width: '390px', marginBottom: '15px'}} label="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             <br/>
-            <TextField id="outlined-password-input" label="Password" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <TextField style={{width: '390px', marginBottom: '15px'}} label="Password" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             <br/>
-            <Button variant="contained" type="submit">Login</Button>
+            <Button style={{marginLeft: '162px'}} variant="contained" type="submit">Login</Button>
             <br />
             <h3 style={{textAlign: 'center'}}>Don't have an account?</h3>
-            <Button variant="contained" href="/register">Register</Button>
+            <Button style={{marginLeft: '146px'}} variant="contained" href="/register">Register</Button>
           </form>
         </div>
 
