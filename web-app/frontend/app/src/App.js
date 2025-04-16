@@ -60,9 +60,51 @@ function Login(){
 
 //main register component
 function Register(){
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmed_password, setConfirmedPassword] = useState("");
+
+  //when the form is submitted the button will call this function
+  function handleRegister(e){
+    e.preventDefault();
+    //http post request to register backend API call
+    fetch("http://127.0.0.1:5000/register", {
+      method: "POST",
+      credentials: "include",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({email, password, confirmed_password})
+    })
+    //get backend response and turn into json
+    .then(res => res.json())
+    //gets that json response to check for successful register
+    .then(data => {
+      if (data.status === "Registered successfully!"){
+        alert(data.status);
+        window.location.href = "/";
+      }
+      else{
+        //confirmed password and password didn't match
+        alert(data.status);
+        window.location.href = "/register";
+      }
+    })
+  }
+
   return(
     <div className="main">
-      <h1>Register</h1>
+      <div className="register-container">
+        <h1 style={{textAlign: 'center'}}>Register here!</h1>
+        <br />
+        <form onSubmit={handleRegister}>
+          <TextField style={{width: '250px', marginBottom: '15px'}} label="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <br />
+          <TextField style={{width: '250px', marginBottom: '15px'}} label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <br />
+          <Button style={{marginBottom: '15px', marginLeft: '75px'}} variant="contained" type="submit">Register</Button>
+          <br />
+          <Button style={{marginLeft: '84px'}} variant="contained" href="/">Sign In!</Button>
+        </form>
+      </div>
     </div>
   );
 }
