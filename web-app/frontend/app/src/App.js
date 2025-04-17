@@ -82,6 +82,10 @@ function Register(){
         alert(data.status);
         window.location.href = "/";
       }
+      else if (data.status === "Account already exists"){
+        alert(data.status);
+        window.location.href = "/";
+      }
       else{
         //confirmed password and password didn't match
         alert(data.status);
@@ -99,6 +103,8 @@ function Register(){
           <TextField style={{width: '250px', marginBottom: '15px'}} label="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
           <br />
           <TextField style={{width: '250px', marginBottom: '15px'}} label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <br />
+          <TextField style={{width: '250px', marginBottom: '15px'}} label="Confirm Password" type="password" value={confirmed_password} onChange={(e) => setConfirmedPassword(e.target.value)}/>
           <br />
           <Button style={{marginBottom: '15px', marginLeft: '75px'}} variant="contained" type="submit">Register</Button>
           <br />
