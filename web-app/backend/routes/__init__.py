@@ -1,2 +1,2 @@
 from .auth import auth
-from .game import game
+# from .game import game

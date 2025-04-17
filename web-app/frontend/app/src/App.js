@@ -13,10 +13,10 @@ function Login(){
   //function to handle form submission
   function handleLogin(e){
     e.preventDefault();
-    fetch("http://127.0.0.1:5000/login", {
-      method: "POST",
-      credentials: "include",
-      headers: {"Content-Type": "application/json"},
+    fetch("http://127.0.0.1:5000/auth/login", {
+      method: 'POST',
+      credentials: 'include',
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({email, password}),
     })
     //then function to convert the response to json
@@ -31,11 +31,11 @@ function Login(){
         window.location.href = "/register";
       }
       else{
-        alert("Wrong password or email")
+        alert("Wrong password or email");
         window.location.href = "/";
       }
-    })
-  }
+    });
+  };
 
   return(
     <div className="main">
@@ -68,7 +68,7 @@ function Register(){
   function handleRegister(e){
     e.preventDefault();
     //http post request to register backend API call
-    fetch("http://127.0.0.1:5000/register", {
+    fetch("http://127.0.0.1:5000/auth/register", {
       method: "POST",
       credentials: "include",
       headers: {"Content-Type": "application/json"},

@@ -2,14 +2,15 @@ from flask import Flask
 from flask_cors import CORS
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
-from routes import auth, game
+from routes.auth import auth
+# from routes.game import game
 from model import User, db
 from config import Config
 
 def create_app():
     
     app = Flask(__name__)
-    CORS(app, resources={r'*': {'origins': '*'}}, supports_credentials=True)
+    CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://127.0.0.1:3000"}})
     
     #configurations
     app.config.from_object(Config)
@@ -30,7 +31,7 @@ def create_app():
         
     #make the blueprints
     app.register_blueprint(auth, url_prefix='/auth')
-    app.register_blueprint(game, url_prefix='/game')
+    # app.register_blueprint(game, url_prefix='/game')
     
     return app
     
