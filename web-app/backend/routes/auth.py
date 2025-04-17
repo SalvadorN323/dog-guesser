@@ -28,7 +28,7 @@ def login():
     return jsonify({'status': "Wrong password or email"})
      
         
-    
+
     
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
