@@ -52,9 +52,27 @@ function Dashboard() {
 
     }, []);
 
+    function handleLogout(){
+        fetch("http://127.0.0.1:5000/auth/logout", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            credentials: "include"
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "You have successfully logged out!")
+                alert(data.status);
+            window.location.href = "/";
+        })
+    }
+
     return(
         <div className="main-dash">
-            <h1> Hello, {user}!</h1>
+            <nav className="navbar">
+                <h1> Weclome, {user}!</h1>
+                <Button variant="contained" onClick={handleLogout}>Log out</Button>
+            </nav>
+            
             <img src={img} alt="dog"></img>
         </div>
     );
