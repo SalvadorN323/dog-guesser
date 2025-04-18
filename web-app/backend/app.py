@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from routes.auth import auth
 # from routes.game import game
+from routes.users import users, login_manager
 from model import User, db
 from config import Config
 
@@ -16,7 +17,6 @@ def create_app():
     app.config.from_object(Config)
     
     #initialize login manager
-    login_manager = LoginManager()
     login_manager.init_app(app)
     
     #make the db
@@ -24,14 +24,10 @@ def create_app():
     with app.app_context():
         db.create_all()
         
-    #get user
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
-        
     #make the blueprints
     app.register_blueprint(auth, url_prefix='/auth')
     # app.register_blueprint(game, url_prefix='/game')
+    app.register_blueprint(users, url_prefix='/users')
     
     return app
     
